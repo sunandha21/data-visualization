@@ -65,19 +65,12 @@ var svg = d3.select("body")
 
 
 
-
-
-
-
-
-
-
   
 d3.csv("unemplyment.csv", function(error, data) 
 {    
   dataTX = [];  // Only time series for TX
   data.forEach(function(d) {
-    if (d.State=="Texas")
+    if (d.State=="Texas" )
         dataTX.push(d);
   });
   
@@ -115,7 +108,7 @@ d3.csv("unemplyment.csv", function(error, data)
 });*/
 
 //tool tip1
-/*on("mouseover",function(d) {
+/*.on("mouseover",function(d) {
   var xposition= parsefloat(d3.select(this).attr("x")) + xScale.rangeband()/2;
   var yposition= parsefloat(d3.select(this).attr("y")) + 14;
 
@@ -124,11 +117,8 @@ d3.csv("unemplyment.csv", function(error, data)
   .attr("x", xposition)
   .attr("y", yposition)
   .text(d);
-}) */
+})*/
 //tooltip3
-
-
-
 
 
     // Scale the range of the data
@@ -168,18 +158,14 @@ d3.csv("unemplyment.csv", function(error, data)
 .data(dataTX)
 .append("title")
 .text(function(d){
-  return d.unemplyment;
-}); 
+  return "Unemployment:"+d.unemplyment+" State:"+d.State;
+});
 
     // Add the X Axis
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
-
-   \
-
-
 
     // Add the Y Axis
     svg.append("g")

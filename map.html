@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
@@ -42,8 +43,8 @@ body {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script>
-d3.csv("unemployment.csv", function(err, data) {
-  var config = {"color1":"#d3e5ff","color2":"#08306B","stateDataColumn":"state_or_territory","valueDataColumn":"population_estimate_for_july_1_2013_number"}
+d3.csv("unemplyment.csv", function(err, data) {
+  var config = {"color1":"#d3e5ff","color2":"#08306B","stateDataColumn":"state_or_territory","valueDataColumn":"Unemployment rates by State, not seasonally adjusted"}
   
   var WIDTH = 800, HEIGHT = 500;
   
@@ -149,11 +150,11 @@ d3.csv("unemployment.csv", function(err, data) {
   
   data.forEach(function(d) {
     var id = name_id_map[d[MAP_STATE]];
-    valueById.set(id, +d[MAP_VALUE]); 
+    valueById.set(id, +d[MAP_VALUE]);
   });
   
   quantize.domain([d3.min(data, function(d){ return +d[MAP_VALUE] }),
-    d3.max(data, function(d){ return +d[MAP_VALUE] })]);
+    d3.max(data, function(d){ return +d["Unemployment rates by State, not seasonally adjusted"] })]);
   
   d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
     svg.append("g")
